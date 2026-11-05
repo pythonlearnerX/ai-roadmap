@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>AI 大模型应用开发 · 一年路线图</title>
+<style>
+  :root{
+    --ink:#20262c; --ink-2:#4a545e; --ink-3:#7b858e;
+    --paper:#f7f7f4; --card:#ffffff; --line:#e2e3dd;
+    --p0:#5b7c99; --p1:#6b8e7f; --p2:#8a7c9b; --p3:#a9805f;
+    --gate:#b4553f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Noto Sans SC","Source Han Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+    background:var(--paper); color:var(--ink);
+    padding:44px 40px 56px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto}
+
+  /* header */
+  header{display:flex;align-items:flex-end;justify-content:space-between;
+    border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:26px}
+  .kicker{font-size:12px;letter-spacing:.18em;color:var(--ink-3);margin-bottom:10px}
+  h1{font-size:30px;font-weight:700;letter-spacing:.01em;line-height:1.2}
+  h1 em{font-style:normal;color:var(--p0)}
+  .sub{margin-top:10px;font-size:13px;color:var(--ink-2);line-height:1.7}
+  .stamp{text-align:right;font-size:11.5px;color:var(--ink-3);line-height:1.8;white-space:nowrap}
+  .stamp .srow{margin-top:2px}
+  .stamp b{font-size:17px;color:var(--ink);letter-spacing:.01em;margin-right:2px}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 16px}
+  .stat .n{font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .stat .n span{font-size:12px;font-weight:400;color:var(--ink-3);margin-left:4px}
+  .stat .l{font-size:12px;color:var(--ink-3);margin-top:4px}
+
+  /* deadline ribbon */
+  .ribbon{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border:1px solid var(--line);background:var(--card);margin-bottom:30px}
+  .rb{padding:14px 18px;border-right:1px solid var(--line);position:relative}
+  .rb:last-child{border-right:none}
+  .rb .d{font-size:12px;font-weight:700;color:var(--gate);letter-spacing:.06em}
+  .rb .t{font-size:14px;font-weight:600;margin-top:5px}
+  .rb .x{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+
+  /* section titles */
+  h2{font-size:13px;letter-spacing:.14em;color:var(--ink-3);font-weight:600;
+    margin:0 0 14px;display:flex;align-items:center;gap:10px}
+  h2:after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* month grid */
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:34px}
+  .m{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--p0);
+    padding:12px 12px 13px;min-height:132px;display:flex;flex-direction:column}
+  .m.p1{border-top-color:var(--p1)} .m.p2{border-top-color:var(--p2)} .m.p3{border-top-color:var(--p3)}
+  .m .mo{font-size:11px;color:var(--ink-3);letter-spacing:.06em}
+  .m .tt{font-size:13px;font-weight:700;margin:4px 0 7px;line-height:1.35}
+  .m ul{list-style:none;font-size:11.5px;color:var(--ink-2);line-height:1.55}
+  .m li{padding-left:9px;position:relative;margin-bottom:2px}
+  .m li:before{content:"";position:absolute;left:0;top:7px;width:3px;height:3px;
+    background:var(--ink-3);border-radius:50%}
+  .m .g{margin-top:auto;padding-top:7px}
+  .gchip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;
+    color:#fff;background:var(--gate);padding:2px 7px;border-radius:2px}
+  .gchip.n{background:#e9ebe6;color:var(--ink-2);font-weight:600}
+
+  /* phase strip */
+  .phases{display:grid;grid-template-columns:3fr 2fr 3fr 4fr;gap:4px;margin-bottom:8px}
+  .ph{color:#fff;font-size:11.5px;padding:7px 11px;letter-spacing:.02em}
+  .ph b{font-weight:700;margin-right:7px;letter-spacing:.06em}
+  .ph small{opacity:.85;font-size:10.5px;margin-left:8px}
+
+  /* phase legend */
+  .legend{display:flex;gap:22px;margin:-22px 0 30px;font-size:11.5px;color:var(--ink-3)}
+  .legend i{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:middle}
+
+  /* two col blocks */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);padding:16px 18px;margin-bottom:10px}
+  .card .h{font-size:12.5px;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between}
+  .card .h span{font-weight:400;color:var(--ink-3);font-size:11px}
+  .card p{font-size:11.5px;color:var(--ink-2);line-height:1.65}
+
+  footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="kicker">LEARNING ROADMAP · 2026.11 — 2027.10</div>
+      <h1>大模型应用开发 <em>一年路线</em></h1>
+      <div class="sub">起点：Python 只会语法 ｜ 终点：2027 秋招，4 个项目 + 1 段实习 + 2 个 offer<br>
+      原则：课程只学到能开工，剩下的时间全部给项目</div>
+    </div>
+    <div class="stamp">
+      <div class="srow"><b>12</b>个月 · <b>4</b>阶段 · <b>4</b>项目</div>
+      <div class="srow"><b>30</b>小时 / 周 · 约 130 小时 / 月</div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="n">4<span>个</span></div><div class="l">可上线的项目</div></div>
+    <div class="stat"><div class="n">4<span>道</span></div><div class="l">硬性验收门槛</div></div>
+    <div class="stat"><div class="n">250<span>题</span></div><div class="l">算法题目标</div></div>
+    <div class="stat"><div class="n">8<span>个月</span></div><div class="l">真正的学习期</div></div>
+  </div>
+
+  <div class="ribbon">
+    <div class="rb"><div class="d">2027.03</div><div class="t">暑期实习开投</div><div class="x">全年最关键节点，此前必须有项目上线</div></div>
+    <div class="rb"><div class="d">2027.07</div><div class="t">秋招提前批</div><div class="x">项目 3 上线，简历 v3，能投就投</div></div>
+    <div class="rb"><div class="d">2027.08</div><div class="t">秋招正式批</div><div class="x">投递 80+ 家，面试即复盘</div></div>
+  </div>
+
+  <h2>逐月任务</h2>
+  <div class="phases">
+    <div class="ph" style="background:var(--p0)"><b>P0 筑基</b>M1–M3<small>把“会语法”变成“能交付”</small></div>
+    <div class="ph" style="background:var(--p1)"><b>P1 入门</b>M4–M5<small>训练 → 部署</small></div>
+    <div class="ph" style="background:var(--p2)"><b>P2 应用</b>M6–M8<small>检索 → 生成 → 评测</small></div>
+    <div class="ph" style="background:var(--p3)"><b>P3 冲刺</b>M9–M12<small>项目换成 offer</small></div>
+  </div>
+  <div class="grid">
+
+    <div class="m"><div class="mo">M1 · 2026.11</div><div class="tt">把工具链焊死</div>
+      <ul><li>Linux / Git / venv</li><li>Python 工程化</li><li>建 3 个仓库</li></ul>
+      <div class="g"><span class="gchip n">30 分钟交付</span></div></div>
+
+    <div class="m"><div class="mo">M2 · 2026.12</div><div class="tt">数据与抓取</div>
+      <ul><li>pandas / SQL</li><li>requests + 解析</li><li>项目 1 开工</li></ul></div>
+
+    <div class="m"><div class="mo">M3 · 2027.01</div><div class="tt">第一个完整项目</div>
+      <ul><li>sklearn 基线</li><li>分析报告 + 部署</li><li>CI 绿勾</li></ul>
+      <div class="g"><span class="gchip">GATE 1</span></div></div>
+
+    <div class="m p1"><div class="mo">M4 · 2027.02</div><div class="tt">深度学习 + PyTorch</div>
+      <ul><li>反向传播 / CNN</li><li>训练循环</li><li>项目 2 开工</li></ul></div>
+
+    <div class="m p1"><div class="mo">M5 · 2027.03</div><div class="tt">服务化 + 投实习</div>
+      <ul><li>FastAPI / Docker</li><li>模型上线</li><li>简历 v1 投 30 家</li></ul>
+      <div class="g"><span class="gchip">GATE 2</span></div></div>
+
+    <div class="m p2"><div class="mo">M6 · 2027.04</div><div class="tt">RAG 全链路</div>
+      <ul><li>Transformer 深入</li><li>切分 / 检索 / 重排</li><li>项目 3 开工</li></ul></div>
+
+    <div class="m p2"><div class="mo">M7 · 2027.05</div><div class="tt">项目 3 上线 + 面试</div>
+      <ul><li>评测与引用溯源</li><li>简历 v2</li><li>算法题 150</li></ul>
+      <div class="g"><span class="gchip">GATE 3</span></div></div>
+
+    <div class="m p2"><div class="mo">M8 · 2027.06</div><div class="tt">暑期实习</div>
+      <ul><li>全力实习</li><li>每周记 1 条工作产出</li><li>学习降到 15h/周</li></ul></div>
+
+    <div class="m p3"><div class="mo">M9 · 2027.07</div><div class="tt">项目 4 + 提前批</div>
+      <ul><li>Agent 或 LoRA 二选一</li><li>八股 5–8 模块</li><li>简历 v3</li></ul>
+      <div class="g"><span class="gchip">GATE 4</span></div></div>
+
+    <div class="m p3"><div class="mo">M10 · 2027.08</div><div class="tt">秋招正式批</div>
+      <ul><li>投递 80–120 家</li><li>笔试 + 面试</li><li>24h 内写复盘</li></ul></div>
+
+    <div class="m p3"><div class="mo">M11 · 2027.09</div><div class="tt">面试高峰</div>
+      <ul><li>手撕代码</li><li>场景设计题</li><li>补短板</li></ul></div>
+
+    <div class="m p3"><div class="mo">M12 · 2027.10</div><div class="tt">收口</div>
+      <ul><li>Offer 比较</li><li>签约</li><li>或转春招预案</li></ul></div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <h2>四道验收门槛</h2>
+      <div class="card"><div class="h">G1 · 3 月末<span>证明能交付</span></div>
+        <p>陌生人按 README 20 分钟跑通；有测试和 CI；能讲清数据从哪来、为什么这样处理。</p></div>
+      <div class="card"><div class="h">G2 · 5 月末<span>证明能上线</span></div>
+        <p>公网可访问的 API；docker compose 一键起；README 有 F1 / 延迟 / QPS 数字。</p></div>
+      <div class="card"><div class="h">G3 · 7 月末<span>证明懂 LLM 应用</span></div>
+        <p>3 种切分对比 + 检索命中率 + 忠实度；引用可溯源；能白板画全链路讲 5 个取舍。</p></div>
+      <div class="card"><div class="h">G4 · 9 月末<span>证明能过面试</span></div>
+        <p>算法题 250+；八股 8 模块连讲 40 分钟；完成 10 场面试并复盘。</p></div>
+    </div>
+
+    <div>
+      <h2>四个项目 = 四块简历</h2>
+      <div class="card"><div class="h">P1 · ai-job-radar<span>M2–M3</span></div>
+        <p>5000+ 岗位 JD 采集 → 清洗 → 技能画像。练工程化，同时用数据验证自己的学习路线。</p></div>
+      <div class="card"><div class="h">P2 · 文本分类服务<span>M4–M5</span></div>
+        <p>BERT 微调 → FastAPI → Docker 上线。面试官问“部署过模型吗”，你拿得出 URL 和延迟。</p></div>
+      <div class="card"><div class="h">P3 · 知识库 RAG（主力）<span>M6–M7</span></div>
+        <p>解析 / 切分 / 混合检索 / 重排 / 引用 / 评测 / 部署。面试 60% 时间会花在这里。</p></div>
+      <div class="card"><div class="h">P4 · Agent 或 LoRA<span>M8–M9</span></div>
+        <p>二选一：能调工具的多步 Agent，或 7B 模型 LoRA 微调 + vLLM 部署对比 prompt 方案。</p></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>配套文档：01 路线总表 · 02 周计划 · 03 项目作品集 · 04 GitHub 手册 · 05 求职与面试 · 06 资源 · 07 避坑</span>
+    <span>DSH ｜ 2026-11-05</span>
+  </footer>
+</div>
+</body>
+</html>
