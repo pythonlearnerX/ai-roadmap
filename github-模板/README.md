@@ -25,6 +25,6 @@ cd D:/xueru/Documents/learning-log
 git init -b main
 git add .
 git commit -m "chore: 初始化学习日志"
-git remote add origin git@github.com:YOUR_USERNAME/learning-log.git
+git remote add origin git@github.com:pythonlearnerX/learning-log.git
 git push -u origin main
 ```

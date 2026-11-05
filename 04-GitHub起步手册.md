@@ -122,7 +122,7 @@ Host github.com
 
 | 仓库名 | 用途 |
 | --- | --- |
-| `YOUR_USERNAME` | 同名仓库 = Profile 主页展示，必须同名、必须 Public |
+| `pythonlearnerX` | 同名仓库 = Profile 主页展示，必须同名、必须 Public |
 | `learning-log` | 每天 3 行的学习日志，绿格子来源 |
 | `ai-roadmap` | 这份路线 + 你的月度复盘 |
 
@@ -134,7 +134,7 @@ git init -b main
 # 把 github-模板/learning-log/ 里的文件复制进来
 git add .
 git commit -m "chore: 初始化学习日志仓库"
-git remote add origin git@github.com:YOUR_USERNAME/learning-log.git
+git remote add origin git@github.com:pythonlearnerX/learning-log.git
 git push -u origin main
 ```
 

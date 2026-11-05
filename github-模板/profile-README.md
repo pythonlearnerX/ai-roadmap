@@ -1,4 +1,4 @@
-# 你好，我是 YOUR_USERNAME 👋
+# 你好，我是 pythonlearnerX 👋
 
 > 人工智能专业大三 · 方向：**大模型应用开发（RAG / Agent / 模型服务化）**
 > 目标：2027 年秋招，用项目说话。目前正在按一年路线系统学习。
@@ -15,13 +15,19 @@
 
 ## 🧩 项目
 
+**已完成**
+
 | 项目 | 说明 | 技术栈 |
 | --- | --- | --- |
-| [rag-knowledge-base](https://github.com/YOUR_USERNAME/rag-knowledge-base) | 企业知识库问答，带引用溯源与评测 | Python · LangChain · Chroma · FastAPI |
-| [bert-text-classifier](https://github.com/YOUR_USERNAME/bert-text-classifier) | 中文文本分类服务，Docker 部署 | PyTorch · transformers · Docker |
-| [ai-job-radar](https://github.com/YOUR_USERNAME/ai-job-radar) | 5000+ 岗位 JD 采集与分析 | pandas · requests · SQLite |
+| [study-tracker](https://github.com/pythonlearnerX/study-tracker) | 命令行学习记录工具，SQLite 存储，27 个测试 + CI | Python · SQLite · pytest · GitHub Actions |
 
-> 每个项目的 README 里都有：架构图、运行方式、指标数字、踩坑记录。
+**正在做 / 计划中**（做出来再挂链接，不放空链）
+
+| 项目 | 计划 | 技术栈 |
+| --- | --- | --- |
+| ai-job-radar | 2026.12–2027.01 · 5000+ 岗位 JD 采集与分析 | pandas · requests · SQLite |
+| bert-text-classifier | 2027.02–03 · 中文文本分类服务，Docker 部署 | PyTorch · transformers · FastAPI |
+| rag-knowledge-base | 2027.04–05 · 企业知识库问答，带引用溯源与评测 | LangChain · Chroma · FastAPI |
 
 ---
 
@@ -33,7 +39,7 @@
 
 ## 📚 学习记录
 
-- [learning-log](https://github.com/YOUR_USERNAME/learning-log) —— 每天 3 行，记录在做的事和卡住的地方
+- [learning-log](https://github.com/pythonlearnerX/learning-log) —— 每天 3 行，记录在做的事和卡住的地方
 - 技术博客：<你的博客地址，没有就删掉这行>
 
 ---
